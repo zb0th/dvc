@@ -445,8 +445,10 @@ class Repo(object):
                 stages.append(stage)
 
             def filter_dirs(dname, root=root):
+                if dname in ('image', 'image-aug'):
+                    return False
                 path = os.path.join(root, dname)
-                if path in (self.dvc_dir, self.scm.dir, 'data'):
+                if path in (self.dvc_dir, self.scm.dir):
                     return False
                 for out in outs:
                     if path == os.path.normpath(out) or path.startswith(out):
