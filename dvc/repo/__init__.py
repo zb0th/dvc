@@ -446,7 +446,7 @@ class Repo(object):
 
             def filter_dirs(dname, root=root):
                 path = os.path.join(root, dname)
-                if path in (self.dvc_dir, self.scm.dir):
+                if path in (self.dvc_dir, self.scm.dir, 'data'):
                     return False
                 for out in outs:
                     if path == os.path.normpath(out) or path.startswith(out):
